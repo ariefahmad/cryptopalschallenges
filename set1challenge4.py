@@ -15,3 +15,5 @@ if __name__ == '__main__':
 # Output:
 # Line:  170
 # (53, 2.3613299999999993, b'Now that the party is jumping\n')
+
+    print(set1challenge3.crack_singlebyteXOR(reader[0][170])[2].decode("ascii"))  # final formatting
