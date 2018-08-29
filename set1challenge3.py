@@ -57,13 +57,11 @@ def XOR_singlechar(str, key):
         output += bytes([char ^ key])  # applying XOR
     return output
 
-def crack_singlebyteXOR(cipher_str):
+def crack_singlebyteXOR(cipher_bytes):
     """
-    Cracking the cipher
+    Cracking the cipher; cipher_bytes in bytes
     """
     candidates = list()
-    cipher_bytes = bytes.fromhex(cipher_str)
-
     for key_candidate in range(256):
         byte_candidate = XOR_singlechar(cipher_bytes, key_candidate)
         candidates.append((key_candidate, score_sys(byte_candidate), byte_candidate))
@@ -71,8 +69,8 @@ def crack_singlebyteXOR(cipher_str):
 
 if __name__ == '__main__':
     encodedA = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
-
-    print(crack_singlebyteXOR(encodedA)[2].decode("ascii"))
+    decodedA = bytes.fromhex(encodedA)
+    print(crack_singlebyteXOR(decodedA)[2].decode("ascii"))
 
 # Output:
 # (88, 2.5316499999999995, b"Cooking MC's like a pound of bacon")
