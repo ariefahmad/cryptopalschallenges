@@ -8,7 +8,7 @@ def detectAES(textfile):
     line_num = 0
     current_max = 0
     for line in lines:
-        blocks = [line[i: i+8] for i in range(0, len(line), 8)] # into blocks of 8
+        blocks = [line[i: i+16] for i in range(0, len(line), 16)] # into blocks of 16 bytes
         similar_cnt = 0
         for fb in blocks:  # loop over first block
             for sb in blocks:  # loop over second block
