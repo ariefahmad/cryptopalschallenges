@@ -9,13 +9,13 @@ def detectAES(textfile):
     current_max = 0
     for line in lines:
         blocks = [line[i: i+8] for i in range(0, len(line), 8)] # into blocks of 8
-        similarCnt = 0
+        similar_cnt = 0
         for fb in blocks:  # loop over first block
             for sb in blocks:  # loop over second block
                 if fb == sb:
-                    similarCnt += 1
-        if similarCnt > current_max:  # get line with most similar counts
-            current_max = similarCnt
+                    similar_cnt += 1
+        if similar_cnt > current_max:  # get line with most similar counts
+            current_max = similar_cnt
             probable_line = line_num
         line_num += 1
     return lines[probable_line]
